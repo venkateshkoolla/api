@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Expressions;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,7 @@ namespace api.Controllers
 
         }
 
-        // https://localhost:44395/weatherforecast/
+        // https://localhost:{port}/weatherforecast/
         [HttpGet]
         [Authorize]
         public ActionResult<IEnumerable<WeatherForecast>> All()
@@ -32,41 +34,75 @@ namespace api.Controllers
             return _sharedMemory.weatherForecasts;
         }
 
-        //https://localhost:44395/weatherforecast
+        //https://localhost:{port}/weatherforecast
         [HttpPut]
         [Authorize]
         public ActionResult<WeatherForecast> Put(WeatherForecast model)
         {
+            if (model == null) throw new ValidationException("request body can not be empty.");
+
             var wfc = new WeatherForecast()
             {
                 City = model.City,
                 details = new List<Detail>()
             };
 
-            var isExists = _sharedMemory.weatherForecasts.Any(x => x.City == model.City);
-            if (!isExists)
+            try
             {
-                foreach (var detail in model.details)
+                var isExists = _sharedMemory.weatherForecasts.Any(x => x.City == model.City);
+                if (!isExists)
                 {
-                    wfc.details.Add(detail);
+                    foreach (var detail in model.details)
+                    {
+                        wfc.details.Add(detail);
+                    }
+                    _sharedMemory.weatherForecasts.Add(wfc);
                 }
-                _sharedMemory.weatherForecasts.Add(wfc);
+                else
+                {
+                    var item = _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City);
+                    List<Detail> updatedDetails;
+
+                    // Added extra weather days from request
+                    if (item.details.Count < model.details.Count)
+                    {
+
+                        updatedDetails = model.details.Where(x => !item.details.Any(y => y.Date == x.Date)).ToList();
+                        var updatedDetail = item
+                         .details
+                         .Concat(updatedDetails);
+                        _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City).details = updatedDetail.ToList();
+                    }
+
+                    // removed existing weather days from request
+                    else if (item.details.Count > model.details.Count)
+                    {
+                        updatedDetails = item.details.Where(x => !model.details.Any(y => y.Date == x.Date)).ToList();
+                        for (int i = item.details.Count - 1; i > -1; i--)
+                        {
+                            Detail detail = item.details[i];
+                            for (int j = 0; j <= updatedDetails.Count() - 1; j++)
+                            {
+                                Detail removedDetail = updatedDetails[j];
+                                if (detail.Date == removedDetail.Date)
+                                {
+                                    item.details.RemoveAt(i);
+                                }
+                            }
+                        }
+                        _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City).details = item.details;
+                    }
+                }
+
+                return _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City);
             }
-            else
+            catch (Exception ex)
             {
-                var item = _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City);
-                var detailsNotExist = model.details.Where(x => !item.details.Any(y => y.Date == x.Date));
-
-                var updatedDetail = item
-                     .details
-                     .Concat(detailsNotExist);
-                _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City).details = updatedDetail.ToList();
+                throw (ex);
             }
-
-            return _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City);
         }
 
-        //https://localhost:44395/weatherforecast/{city}
+        //https://localhost:{port}/weatherforecast/{city}
         [HttpGet("{city}")]
         [Authorize]
         public ActionResult<WeatherForecast> Get(string city)
@@ -75,7 +111,7 @@ namespace api.Controllers
                 .FirstOrDefault(x => string.Compare(x.City, city, StringComparison.InvariantCultureIgnoreCase) == 0);
         }
 
-        // https://localhost:44395/weatherforecast/vancouver
+        // https://localhost:{port}/weatherforecast/{city}
         [HttpPost("{city}")]
         [Authorize]
         public ActionResult<IEnumerable<WeatherForecast>> Delete(string city)

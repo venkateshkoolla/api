@@ -288,8 +288,6 @@ C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\ru\Microsoft.
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.csproj.CoreCompileInputs.cache
-C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.MvcApplicationPartsAssemblyInfo.cache
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.AssemblyInfoInputs.cache
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.AssemblyInfo.cs
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.RazorTargetAssemblyInfo.cache
@@ -299,3 +297,10 @@ C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\staticwebasse
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.dll
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.pdb
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.genruntimeconfig.cache
+C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.csprojAssemblyReference.cache
+C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.csproj.CoreCompileInputs.cache
+C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.MvcApplicationPartsAssemblyInfo.cache
