@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace api
+namespace api.Models
 {
     public class WeatherForecast
     {   

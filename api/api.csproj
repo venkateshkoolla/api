@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>SouthIndianVillage_api</RootNamespace>
+    <RootNamespace>api</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

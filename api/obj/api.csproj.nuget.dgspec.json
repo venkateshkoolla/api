@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\api\\api\\api.csproj": {}
+    "C:\\Projects\\SouthIndianVillage-api\\api\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\api\\api\\api.csproj": {
+    "C:\\Projects\\SouthIndianVillage-api\\api\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\api\\api\\api.csproj",
+        "projectUniqueName": "C:\\Projects\\SouthIndianVillage-api\\api\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Projects\\api\\api\\api.csproj",
+        "projectPath": "C:\\Projects\\SouthIndianVillage-api\\api\\api\\api.csproj",
         "packagesPath": "C:\\Users\\vishw\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\api\\api\\obj\\",
+        "outputPath": "C:\\Projects\\SouthIndianVillage-api\\api\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vishw\\AppData\\Roaming\\NuGet\\NuGet.Config",
