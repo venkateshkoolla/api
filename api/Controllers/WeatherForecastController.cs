@@ -92,6 +92,10 @@ namespace api.Controllers
                         }
                         _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City).details = item.details;
                     }
+                    else
+                    {
+                        _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City).details = model.details;
+                    }
                 }
 
                 return _sharedMemory.weatherForecasts.FirstOrDefault(x => x.City == model.City);
