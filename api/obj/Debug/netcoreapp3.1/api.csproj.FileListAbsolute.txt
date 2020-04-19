@@ -301,6 +301,7 @@ C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.csprojAss
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+C:\Projects\SouthIndianVillage-api\api\api\bin\Debug\netcoreapp3.1\MediatR.dll
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.csproj.CoreCompileInputs.cache
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\SouthIndianVillage-api\api\api\obj\Debug\netcoreapp3.1\api.MvcApplicationPartsAssemblyInfo.cache

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "njVxgo5cCdo13l/ErLPb/RRoZdrq50HKE696NmXBoS3gJ8C/sK8k5tLmE7YysYu8CWEtOjpYEw29QlPsBco6lQ==",
+  "dgSpecHash": "2hCiSnIzt4hi8oiI9n0zbOcp+HuzMr8gpGjzifbVIGH9sbHzS5jA1dzgpCueEJXZ9lI2hNRtKVKAWcVES9VtbA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\SouthIndianVillage-api\\api\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vishw\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\vishw\\.nuget\\packages\\fluentvalidation.aspnetcore\\8.6.2\\fluentvalidation.aspnetcore.8.6.2.nupkg.sha512",
     "C:\\Users\\vishw\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\8.6.2\\fluentvalidation.dependencyinjectionextensions.8.6.2.nupkg.sha512",
+    "C:\\Users\\vishw\\.nuget\\packages\\mediatr\\8.0.1\\mediatr.8.0.1.nupkg.sha512",
     "C:\\Users\\vishw\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",
     "C:\\Users\\vishw\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vishw\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

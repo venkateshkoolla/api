@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using api;
+using MediatR;
 
 namespace api.Controllers
 {
@@ -18,6 +21,7 @@ namespace api.Controllers
         private SharedMemory _sharedMemory;
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IMediator _mediator;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, SharedMemory sharedMemory)
         {
@@ -31,6 +35,10 @@ namespace api.Controllers
         [Authorize]
         public ActionResult<IEnumerable<WeatherForecast>> All()
         {
+            if (!_sharedMemory.weatherForecasts?.Any() == true)
+            {
+                return BadRequest("No Weather forecast yet!");
+            }
             return _sharedMemory.weatherForecasts;
         }
 
@@ -39,6 +47,7 @@ namespace api.Controllers
         [Authorize]
         public ActionResult<WeatherForecast> Put(WeatherForecast model)
         {
+
             if (model == null) throw new ValidationException("request body can not be empty.");
 
             var wfc = new WeatherForecast()
@@ -109,10 +118,35 @@ namespace api.Controllers
         //https://localhost:{port}/weatherforecast/{city}
         [HttpGet("{city}")]
         [Authorize]
-        public ActionResult<WeatherForecast> Get(string city)
+        public ActionResult<WeatherForecast> Get(string city, [FromQuery]string startDate, [FromQuery]string endDate)
         {
-            return _sharedMemory.weatherForecasts
+            var cityData = _sharedMemory.weatherForecasts
                 .FirstOrDefault(x => string.Compare(x.City, city, StringComparison.InvariantCultureIgnoreCase) == 0);
+            if (cityData == null) return BadRequest("No city found");
+            if (string.IsNullOrEmpty(startDate) && string.IsNullOrEmpty(endDate)) return cityData;
+            else
+            {
+                var start = startDate.ToDateTime();
+                var end = endDate.ToDateTime().AddDays(1);
+                if (start > end)
+                {
+                    return BadRequest("start date can not be greater than end date");
+                }
+
+                var details = new List<Detail>(cityData.details.Where(x => x.Date >= start && x.Date < end));
+                if (!details?.Any() == true)
+                {
+                    return BadRequest("No data found witht the given date range.");
+                }
+
+                var result = new WeatherForecast()
+                {
+                    City = cityData.City,
+                    details = details.ToList()
+                };
+
+                return result;
+            }
         }
 
         // https://localhost:{port}/weatherforecast/{city}
@@ -129,7 +163,7 @@ namespace api.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("No city found with the given name.");
             }
         }
     }

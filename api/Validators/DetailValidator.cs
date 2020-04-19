@@ -12,7 +12,7 @@ namespace api.Validators
             CascadeMode = CascadeMode.StopOnFirstFailure;
 
             RuleFor(x => x.Date)
-                .Must(x => IsDate(x, "yyyy-MM-dd"))
+                .Must(x => IsDate(x.ToString("yyyy-MM-dd"), "yyyy-MM-dd"))
                 .WithMessage("'Date Of weatherforecast' must be a valid date 'yyyy-MM-dd'")
                 .NotEmpty();
         }

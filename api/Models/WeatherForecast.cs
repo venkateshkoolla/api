@@ -11,7 +11,7 @@ namespace api.Models
 
     public class Detail
     {
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }
 
