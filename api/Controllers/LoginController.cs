@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using api.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -11,6 +12,7 @@ namespace api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class LoginController : ControllerBase
     {
         private IConfiguration _config;
@@ -56,9 +58,9 @@ namespace api.Controllers
 
             //Validate the User Credentials  
             //Demo Purpose, I have Passed HardCoded User Information  
-            if (login.UserName == "kirang")
+            if (string.Compare(login.Email,"Vishwa.koolla@gmail.com", StringComparison.OrdinalIgnoreCase) == 0)
             {
-                user = new User { UserName = "kirang" };
+                user = new User { Email = "Vishwa.koolla@gmail.com" };
             }
             return user;
         }
